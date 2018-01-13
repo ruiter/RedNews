@@ -1,9 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
-
-
 
     defaultConfig {
         minSdkVersion 16
@@ -31,4 +30,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+}
+repositories {
+    mavenCentral()
 }
