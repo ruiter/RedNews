@@ -1,7 +1,8 @@
-package com.ruiter.rednews
+package com.ruiter.rednews.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.ruiter.rednews.R
 
 class MainActivity : AppCompatActivity() {
 
