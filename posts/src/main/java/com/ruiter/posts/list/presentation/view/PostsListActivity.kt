@@ -21,4 +21,9 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
         setContentView(R.layout.rednewsact_layout)
     }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.destroy()
+    }
 }
