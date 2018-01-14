@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -30,7 +30,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     // dagger 2
-    compile 'com.google.dagger:dagger:2.11-rc2'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.11-rc2'
-    compile 'com.google.dagger:dagger-android-support:2.11-rc2'
+    implementation 'com.google.dagger:dagger:2.11-rc2'
+    kapt 'com.google.dagger:dagger-compiler:2.11-rc2'
+    kapt 'com.google.dagger:dagger-android-processor:2.11-rc2'
+    implementation 'com.google.dagger:dagger-android-support:2.11-rc2'
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+
+    compile project(path: ':posts')
 }
