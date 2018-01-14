@@ -36,5 +36,16 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.11-rc2'
     compileOnly 'org.glassfish:javax.annotation:10.0-b28'
 
-    compile project(path: ':posts')
+    // Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.0'
+
+    // Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+
+    implementation project(path: ':posts')
 }

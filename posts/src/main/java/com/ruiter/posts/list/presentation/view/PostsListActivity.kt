@@ -7,11 +7,6 @@ import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
-    override fun showError() {
-    }
-
-    override fun hideError() {
-    }
 
     @Inject
     lateinit var presenter: PostsListPresenter
@@ -26,4 +21,11 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
         super.onStop()
         presenter.destroy()
     }
+
+    override fun showError() {
+    }
+
+    override fun hideError() {
+    }
+
 }
