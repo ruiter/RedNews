@@ -3,7 +3,7 @@ package com.ruiter.posts.data
 import com.nhaarman.mockito_kotlin.mock
 import com.ruiter.posts.list.data.net.PostsListService
 import com.ruiter.posts.list.data.repository.PostsListDataRepository
-import com.ruiter.posts.list.data.repository.datasource.PostsListDataImpl
+import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test

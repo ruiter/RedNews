@@ -10,13 +10,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import android.app.Application
 import okhttp3.Cache
-import javax.inject.Singleton
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
-
-
-
-
 
 @Module
 class NetModule {

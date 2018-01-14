@@ -1,4 +1,4 @@
-package com.ruiter.posts.list.data.entity
+package com.ruiter.posts.list.data.models
 
 import com.google.gson.annotations.SerializedName
 
@@ -10,9 +10,9 @@ data class PostsListResponse(@SerializedName("kind")
 data class ChildrenResponse(@SerializedName("whitelist_status")
                             val whitelistStatus: String,
                             @SerializedName("children")
-                            val childrenResponse: MutableList<DataResponse>)
+                            val childrenResponse: MutableList<DataParentResponse>)
 
-data class DataResponse(@SerializedName("data")
+data class DataParentResponse(@SerializedName("data")
                         val dataChildren: DataChildrenResponse)
 
 data class DataChildrenResponse(@SerializedName("domain")

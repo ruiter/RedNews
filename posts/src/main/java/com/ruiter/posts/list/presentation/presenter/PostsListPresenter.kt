@@ -8,4 +8,8 @@ class PostsListPresenter @Inject constructor(val view: PostsListView) : Presente
     override fun destroy() {
         Log.i("ruiter", "destroy presenter")
     }
+
+    fun request() {
+
+    }
 }

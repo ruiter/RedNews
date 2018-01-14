@@ -1,6 +1,6 @@
-package com.ruiter.posts.list.data.repository.datasource
+package com.ruiter.posts.list.data.repository.source
 
-import com.ruiter.posts.list.data.entity.PostsListResponse
+import com.ruiter.posts.list.data.models.PostsListResponse
 import io.reactivex.Single
 
 interface PostsListData {

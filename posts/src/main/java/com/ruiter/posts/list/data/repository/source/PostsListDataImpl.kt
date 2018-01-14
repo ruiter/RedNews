@@ -1,11 +1,8 @@
-package com.ruiter.posts.list.data.repository.datasource
+package com.ruiter.posts.list.data.repository.source
 
-import android.util.Log
-import com.ruiter.posts.list.data.entity.PostsListResponse
+import com.ruiter.posts.list.data.models.PostsListResponse
 import com.ruiter.posts.list.data.net.PostsListService
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class PostsListDataImpl @Inject constructor(private val service: PostsListService) : PostsListData {

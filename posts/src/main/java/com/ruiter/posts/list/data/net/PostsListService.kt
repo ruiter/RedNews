@@ -1,6 +1,6 @@
 package com.ruiter.posts.list.data.net
 
-import com.ruiter.posts.list.data.entity.PostsListResponse
+import com.ruiter.posts.list.data.models.PostsListResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
