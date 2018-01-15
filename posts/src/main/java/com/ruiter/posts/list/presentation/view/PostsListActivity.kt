@@ -14,7 +14,7 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.rednewsact_layout)
+        setContentView(R.layout.posts_list_layout)
 
         presenter.request()
     }
