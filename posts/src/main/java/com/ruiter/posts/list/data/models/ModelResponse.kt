@@ -15,5 +15,11 @@ data class DataResponse(@SerializedName("whitelist_status")
 data class ChildrenResponse(@SerializedName("data")
                         val dataChildren: DataChildrenResponse)
 
-data class DataChildrenResponse(@SerializedName("domain")
-                        val domain: String)
+data class DataChildrenResponse(@SerializedName("title")
+                                val title: String,
+                                @SerializedName("thumbnail")
+                                val thumbnail: String,
+                                @SerializedName("author")
+                                val author: String,
+                                @SerializedName("url")
+                                val url: String)

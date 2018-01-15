@@ -21,5 +21,5 @@ fun ChildrenResponse.toDataParentBusinnes() : ChildrenBusinness {
     return ChildrenBusinness(dataChildren.toDataChildrenBusinness())
 }
 fun DataChildrenResponse.toDataChildrenBusinness() : DataChildrenBusinness {
-    return DataChildrenBusinness(domain)
+    return DataChildrenBusinness(title, thumbnail, author, url)
 }

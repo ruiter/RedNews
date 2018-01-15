@@ -6,4 +6,7 @@ data class Data(val whitelistStatus: String, val childrenResponse: MutableList<C
 
 data class Children(val dataChildren: DataChildren)
 
-data class DataChildren(val domain: String)
+data class DataChildren(val title: String,
+                        val thumbnail: String,
+                        val author: String,
+                        val url: String)
