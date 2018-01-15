@@ -1,9 +1,9 @@
 package com.ruiter.posts.list.presentation.model
 
-data class PostsList(val kind: String, val dataResponse: Children)
+data class PostsList(val kind: String, val dataResponse: Data)
 
-data class Children(val whitelistStatus: String, val childrenResponse: MutableList<DataParent>)
+data class Data(val whitelistStatus: String, val childrenResponse: MutableList<Children>)
 
-data class DataParent(val dataChildren: DataChildren)
+data class Children(val dataChildren: DataChildren)
 
 data class DataChildren(val domain: String)
