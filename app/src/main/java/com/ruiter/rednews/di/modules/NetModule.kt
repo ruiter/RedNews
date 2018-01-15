@@ -24,9 +24,9 @@ class NetModule {
     }
 
     @Provides
-    fun provideOkHttpCache(application: Application): Cache {
-        val cacheSize = 10 * 1024 * 1024 // 10 MiB
-        return Cache(application.cacheDir, cacheSize.toLong())
+    fun provideOkhttpClient(): OkHttpClient {
+        val client = OkHttpClient.Builder()
+        return client.build()
     }
 
     @Provides
