@@ -1,9 +1,6 @@
 package com.ruiter.posts.list.presentation.mapper
 
-import com.ruiter.posts.list.domain.models.ChildrenBusinness
-import com.ruiter.posts.list.domain.models.DataBusinness
-import com.ruiter.posts.list.domain.models.DataChildrenBusinness
-import com.ruiter.posts.list.domain.models.PostsListBusinness
+import com.ruiter.posts.list.domain.models.*
 import com.ruiter.posts.list.presentation.model.*
 
 fun PostsListBusinness.toPostsList() : PostsList {
@@ -25,5 +22,33 @@ fun ChildrenBusinness.toDataParent() : Children {
 }
 
 fun DataChildrenBusinness.toDataChildren() : DataChildren {
-    return DataChildren(title, thumbnail, author, url)
+    return DataChildren(title, thumbnail, author, url, preview?.toPreview())
+}
+
+fun PreviewBusinnes.toPreview() : Preview {
+    return Preview(toListImages())
+}
+
+fun ImagesBusinnes.toImages() : Images {
+    return Images(source.toSource(), toListResolutions())
+}
+
+fun PreviewBusinnes.toListImages() : MutableList<Images> {
+    return images.map {
+        it.toImages()
+    }.toMutableList()
+}
+
+fun SourceBusinnes.toSource() : Source {
+    return Source(url, width, height)
+}
+
+fun ResolutionsBusinnes.toResolutios() : Resolutions {
+    return Resolutions(url, width, height)
+}
+
+fun ImagesBusinnes.toListResolutions() : MutableList<Resolutions> {
+    return resolutions.map {
+        it.toResolutios()
+    }.toMutableList()
 }

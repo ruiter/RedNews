@@ -12,6 +12,8 @@ import android.app.Application
 import okhttp3.Cache
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import com.ruiter.rednews.BuildConfig
+import okhttp3.logging.HttpLoggingInterceptor
 
 @Module
 class NetModule {
@@ -25,8 +27,20 @@ class NetModule {
 
     @Provides
     fun provideOkhttpClient(): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        val level = getInterceptorLevel()
+        httpLoggingInterceptor.level = level
+
         val client = OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
         return client.build()
+    }
+
+    private fun getInterceptorLevel(): HttpLoggingInterceptor.Level {
+        return if (BuildConfig.DEBUG)
+            HttpLoggingInterceptor.Level.BODY
+        else
+            HttpLoggingInterceptor.Level.NONE
     }
 
     @Provides

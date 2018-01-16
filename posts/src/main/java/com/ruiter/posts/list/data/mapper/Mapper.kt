@@ -21,5 +21,33 @@ fun ChildrenResponse.toDataParentBusinnes() : ChildrenBusinness {
     return ChildrenBusinness(dataChildren.toDataChildrenBusinness())
 }
 fun DataChildrenResponse.toDataChildrenBusinness() : DataChildrenBusinness {
-    return DataChildrenBusinness(title, thumbnail, author, url)
+    return DataChildrenBusinness(title, thumbnail, author, url, preview?.toPreviewBusiness())
+}
+
+fun PreviewResponse.toPreviewBusiness() : PreviewBusinnes {
+    return PreviewBusinnes(toListImagesBusiness())
+}
+
+fun ImagesResponse.toImagesBusiness() : ImagesBusinnes {
+    return ImagesBusinnes(source.toSourceBusiness(), toListResolutionsBusiness())
+}
+
+fun PreviewResponse.toListImagesBusiness() : MutableList<ImagesBusinnes> {
+    return images.map {
+        it.toImagesBusiness()
+    }.toMutableList()
+}
+
+fun SourceResponse.toSourceBusiness() : SourceBusinnes {
+    return SourceBusinnes(url, width, height)
+}
+
+fun ResolutionsResponse.toResolutiosBusiness() : ResolutionsBusinnes {
+    return ResolutionsBusinnes(url, width, height)
+}
+
+fun ImagesResponse.toListResolutionsBusiness() : MutableList<ResolutionsBusinnes> {
+    return resolutions.map {
+        it.toResolutiosBusiness()
+    }.toMutableList()
 }

@@ -22,4 +22,28 @@ data class DataChildrenResponse(@SerializedName("title")
                                 @SerializedName("author")
                                 val author: String,
                                 @SerializedName("url")
-                                val url: String)
+                                val url: String,
+                                @SerializedName("preview")
+                                val preview: PreviewResponse?)
+
+data class PreviewResponse(@SerializedName("images")
+                           val images: MutableList<ImagesResponse>)
+
+data class ImagesResponse(@SerializedName("source")
+                          val source: SourceResponse,
+                          @SerializedName("resolutions")
+                            val resolutions: MutableList<ResolutionsResponse>)
+
+data class SourceResponse(@SerializedName("url")
+                          val url: String,
+                          @SerializedName("width")
+                          val width: Int,
+                          @SerializedName("height")
+                          val height: Int)
+
+data class ResolutionsResponse(@SerializedName("url")
+                               val url: String,
+                               @SerializedName("width")
+                               val width: Int,
+                               @SerializedName("height")
+                               val height: Int)
