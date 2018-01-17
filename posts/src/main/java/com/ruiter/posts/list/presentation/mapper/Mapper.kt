@@ -22,7 +22,7 @@ fun ChildrenBusinness.toDataParent() : Children {
 }
 
 fun DataChildrenBusinness.toDataChildren() : DataChildren {
-    return DataChildren(title, thumbnail, author, url, preview?.toPreview())
+    return DataChildren(title, thumbnail, author, url, likes, comments, preview?.toPreview())
 }
 
 fun PreviewBusinnes.toPreview() : Preview {

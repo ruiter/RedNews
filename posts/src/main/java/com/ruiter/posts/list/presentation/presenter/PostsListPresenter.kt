@@ -25,7 +25,7 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
 
         override fun onSuccess(t: PostsListBusinness) {
             val postsList: PostsList = t.toPostsList()
-
+            view.setAdapter(postsList)
             Log.i("ruiter", "onSucess " + postsList)
         }
 

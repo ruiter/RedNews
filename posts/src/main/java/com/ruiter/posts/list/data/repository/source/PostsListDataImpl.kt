@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class PostsListDataImpl @Inject constructor(private val service: PostsListService) : PostsListData {
     override fun getPostsList(after: String, limit: String) : Single<PostsListResponse> {
-        return service.getPostsList(after, limit)
+        return service.getPostsList(after, limit, "1")
     }
 }

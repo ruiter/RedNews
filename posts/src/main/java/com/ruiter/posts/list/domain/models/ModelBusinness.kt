@@ -12,6 +12,8 @@ data class DataChildrenBusinness(val title: String,
                                  val thumbnail: String,
                                  val author: String,
                                  val url: String,
+                                 val likes: String,
+                                 val comments: String,
                                  val preview: PreviewBusinnes?)
 
 data class PreviewBusinnes(val images: MutableList<ImagesBusinnes>)

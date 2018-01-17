@@ -10,6 +10,8 @@ data class DataChildren(val title: String,
                         val thumbnail: String,
                         val author: String,
                         val url: String,
+                        val likes: String,
+                        val comments: String,
                         val preview: Preview?)
 
 data class Preview(val images: MutableList<Images>)

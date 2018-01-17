@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/card_margin_top"
-        android:layout_marginLeft="@dimen/card_margin_horizontal"
-        android:layout_marginRight="@dimen/card_margin_horizontal"
-        card_view:cardCornerRadius="0dp">
+        android:layout_margin="@dimen/card_margin_top"
+        android:elevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:orientation="vertical">
-
 
                 <TextView
                     android:id="@+id/tvSubTitle"
@@ -40,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:text="Unit Test Android"
                     android:textSize="24sp"
-                    android:textColor="@color/colorAccent"/>
+                    android:textColor="@color/colorBlack"/>
             </LinearLayout>
 
             <LinearLayout
@@ -49,9 +44,11 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/ivMain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/teste"/>
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"/>
 
             </LinearLayout>
 
@@ -71,6 +68,7 @@
                     android:layout_marginEnd="8dp" />
 
                 <TextView
+                    android:id="@+id/tvLikes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="180 likes"
@@ -90,6 +88,7 @@
                     android:layout_marginEnd="8dp" />
 
                 <TextView
+                    android:id="@+id/tvComments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="8 comments"

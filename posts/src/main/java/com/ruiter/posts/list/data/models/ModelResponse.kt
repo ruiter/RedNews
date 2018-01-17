@@ -23,6 +23,10 @@ data class DataChildrenResponse(@SerializedName("title")
                                 val author: String,
                                 @SerializedName("url")
                                 val url: String,
+                                @SerializedName("ups")
+                                val likes: String,
+                                @SerializedName("num_comments")
+                                val comments: String,
                                 @SerializedName("preview")
                                 val preview: PreviewResponse?)
 
