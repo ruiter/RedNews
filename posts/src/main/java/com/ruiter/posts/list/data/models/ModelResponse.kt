@@ -5,7 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class PostsListResponse(@SerializedName("kind")
                              val kind: String,
                              @SerializedName("data")
-                             val dataResponse: DataResponse)
+                             val dataResponse: DataResponse,
+                             @SerializedName("after")
+                             val after: String?)
 
 data class DataResponse(@SerializedName("whitelist_status")
                             val whitelistStatus: String,

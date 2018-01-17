@@ -11,20 +11,28 @@ import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 class PostsListPresenter @Inject constructor(val view: PostsListView, val getPostsList: GetPostsList) : Presenter {
+    var after: String? = null
+    private lateinit var dataRequest: DataRequestResponse
+
     override fun destroy() {
         Log.i("ruiter", "destroy presenter")
     }
 
-    fun request() {
-        val dataRequest = DataRequestResponse("", "10")
+    fun request(bool: Boolean) {
+        if (!bool) {
+            after = null
+        }
 
-        getPostsList.execute(PostsListSubscriber(), dataRequest)
+        dataRequest = DataRequestResponse(after, "10")
+
+        getPostsList.execute(PostsListSubscriber(), dataRequest!!)
     }
 
     inner class PostsListSubscriber: DisposableSingleObserver<PostsListBusinness>() {
 
         override fun onSuccess(t: PostsListBusinness) {
             val postsList: PostsList = t.toPostsList()
+            after = postsList.after
             view.setAdapter(postsList)
             Log.i("ruiter", "onSucess " + postsList)
         }

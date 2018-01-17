@@ -5,5 +5,5 @@ import io.reactivex.Single
 
 interface PostsListData {
 
-    fun getPostsList(after: String, limit: String) : Single<PostsListResponse>
+    fun getPostsList(after: String?, limit: String) : Single<PostsListResponse>
 }

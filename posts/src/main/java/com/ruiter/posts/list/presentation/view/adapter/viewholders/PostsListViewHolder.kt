@@ -26,7 +26,7 @@ class PostsListViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(
             }
         }
 
-        tvLikes.text = childreList[position].dataChildren.likes
-        tvComments.text = childreList[position].dataChildren.comments
+        tvLikes.text = childreList[position].dataChildren.likes + " likes"
+        tvComments.text = childreList[position].dataChildren.comments + " comments"
     }
 }

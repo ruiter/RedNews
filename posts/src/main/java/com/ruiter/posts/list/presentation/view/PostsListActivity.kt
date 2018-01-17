@@ -12,6 +12,7 @@ import android.view.MenuItem
 import com.ruiter.posts.list.presentation.view.adapter.PostsListAdapter
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.ruiter.posts.list.presentation.model.PostsList
 
 class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
@@ -19,7 +20,8 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
     @Inject
     lateinit var presenter: PostsListPresenter
 
-    lateinit var adapter: PostsListAdapter
+    var adapter: PostsListAdapter? = null
+
     val linearManager = LinearLayoutManager(this)
     val staggeredManager = StaggeredGridLayoutManager(2,
             StaggeredGridLayoutManager.VERTICAL)
@@ -32,15 +34,30 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
         toolbar.title = "Red News"
 
-        presenter.request()
+        request(false)
+    }
+
+    override fun request(bool: Boolean) {
+        if (!bool) {
+            adapter = null
+        }
+
+        presenter.request(bool)
     }
 
     override fun setAdapter(postsList: PostsList) {
-        adapter = PostsListAdapter(this, postsList)
-        adapter.setList()
-        setLayoutManager()
-        recyclerview.itemAnimator = DefaultItemAnimator()
-        recyclerview.adapter = adapter
+        if (adapter != null) {
+            adapter?.addNews(postsList)
+        } else {
+            adapter = PostsListAdapter(this, postsList)
+            adapter?.setList()
+            adapter?.setRecyclerviewListener(recyclerview, this)
+            setLayoutManager()
+            recyclerview.itemAnimator = DefaultItemAnimator()
+            recyclerview.adapter = adapter
+        }
+        Log.i("ruiter", "adapter " + adapter)
+        adapter?.setLoaded()
     }
 
     private fun setLayoutManager() {

@@ -4,7 +4,7 @@ import com.ruiter.posts.list.data.models.*
 import com.ruiter.posts.list.domain.models.*
 
 fun PostsListResponse.toPostsListBusinness() : PostsListBusinness {
-    return PostsListBusinness(kind, dataResponse.toChildrenBusinness())
+    return PostsListBusinness(kind, dataResponse.toChildrenBusinness(), after)
 }
 
 fun DataResponse.toChildrenBusinness() : DataBusinness {

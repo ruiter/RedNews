@@ -7,4 +7,5 @@ interface PostsListView {
     fun showError()
     fun hideError()
     fun setAdapter(postsList: PostsList)
+    fun request(bool: Boolean)
 }
