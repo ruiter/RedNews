@@ -21,8 +21,8 @@ import com.ruiter.posts.list.presentation.model.Resolutions
 
 fun getBestResolutionImage(context: Context, imageList: MutableList<Images>) : Resolutions? {
 
-    val density = context.resources.displayMetrics.density;
-    lateinit var res: Resolutions
+    val density = context.resources.displayMetrics.density
+    var res = Resolutions("", 0, 0)
 
     if (density == 1.5f || density == 2.0f || density == 3.0f || density == 4.0f) {
         res = filterResolutions(640, imageList[0].resolutions)
