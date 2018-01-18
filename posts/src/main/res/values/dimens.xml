@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="offline_title">18sp</dimen>
+    <dimen name="msg_no_connection">14sp</dimen>
+    <dimen name="try_again">16sp</dimen>
+</resources>

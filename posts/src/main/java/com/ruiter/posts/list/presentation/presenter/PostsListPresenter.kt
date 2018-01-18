@@ -22,6 +22,7 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
 
         if (!bool) {
             Log.i("ruiter", "after " + after)
+            view.hideError()
             view.showProgress()
             after = null
         }
@@ -35,13 +36,15 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
 
         override fun onSuccess(t: PostsListBusinness) {
             val postsList: PostsList = t.toPostsList()
-            Log.i("ruiter", "onSucess postsList.after " + postsList.dataResponse.after)
+
             after = postsList.dataResponse.after
             view.setAdapter(postsList)
             view.hideProgress()
         }
 
         override fun onError(exception: Throwable) {
+            view.hideProgress()
+            view.showError()
             Log.i("ruiter", "onError " + exception.message)
         }
 

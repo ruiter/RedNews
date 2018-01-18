@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import com.ruiter.posts.list.presentation.model.PostsList
+import kotlinx.android.synthetic.main.offline.*
 import kotlinx.android.synthetic.main.progress_list.*
 
 class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
@@ -38,6 +39,10 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
         recyclerview.itemAnimator = DefaultItemAnimator()
         setLayoutManager()
+
+        tvButtonOffline.setOnClickListener{
+            request(false)
+        }
 
         request(false)
     }
@@ -96,9 +101,14 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
     }
 
     override fun showError() {
+        llProgressList.visibility = View.GONE
+        recyclerview.visibility = View.GONE
+        llOffline.visibility = View.VISIBLE
     }
 
     override fun hideError() {
+        llOffline.visibility = View.GONE
+        llProgressList.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

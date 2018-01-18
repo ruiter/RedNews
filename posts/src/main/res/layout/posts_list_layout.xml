@@ -37,10 +37,8 @@
             android:visibility="gone"/>
 
         <include layout="@layout/progress_list"/>
-        <!--<include layout="@layout/loading"/>-->
 
-        <!-- Show this layout when the connection failed -->
-        <!--<include layout="@layout/error"/>-->
+        <include layout="@layout/offline"/>
 
     </FrameLayout>
 

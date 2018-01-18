@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Red News</string>
     <string name="update">Update</string>
+    <string name="offline">Sem Internet</string>
+    <string name="msg_offline">Não foi possível obter conexão com a internet.</string>
+    <string name="try_again">Tentar Novamente</string>
 </resources>
