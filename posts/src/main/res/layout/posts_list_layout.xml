@@ -24,23 +24,24 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recyclerview"/>
+            android:id="@+id/recyclerview"
+            android:visibility="gone"/>
 
-        <!-- Show the loading data -->
+        <include layout="@layout/progress_list"/>
         <!--<include layout="@layout/loading"/>-->
 
         <!-- Show this layout when the connection failed -->
         <!--<include layout="@layout/error"/>-->
 
-    </LinearLayout>
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

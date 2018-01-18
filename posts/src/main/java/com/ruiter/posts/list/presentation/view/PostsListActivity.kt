@@ -13,7 +13,9 @@ import com.ruiter.posts.list.presentation.view.adapter.PostsListAdapter
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.ruiter.posts.list.presentation.model.PostsList
+import kotlinx.android.synthetic.main.progress_list.*
 
 class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
@@ -83,6 +85,16 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
         presenter.destroy()
     }
 
+    override fun showProgress() {
+        recyclerview.visibility = View.GONE
+        llProgressList.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        llProgressList.visibility = View.GONE
+        recyclerview.visibility = View.VISIBLE
+    }
+
     override fun showError() {
     }
 
@@ -95,6 +107,11 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.update -> {
+                request(false)
+            }
+        }
         return true
     }
 }

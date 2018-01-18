@@ -4,6 +4,8 @@ import com.ruiter.posts.list.presentation.model.PostsList
 
 interface PostsListView {
 
+    fun showProgress()
+    fun hideProgress()
     fun showError()
     fun hideError()
     fun setAdapter(postsList: PostsList)

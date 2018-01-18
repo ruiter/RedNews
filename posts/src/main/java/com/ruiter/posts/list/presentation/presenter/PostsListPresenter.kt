@@ -19,9 +19,10 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
     }
 
     fun request(bool: Boolean) {
+
         if (!bool) {
             Log.i("ruiter", "after " + after)
-
+            view.showProgress()
             after = null
         }
 
@@ -37,6 +38,7 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
             Log.i("ruiter", "onSucess postsList.after " + postsList.dataResponse.after)
             after = postsList.dataResponse.after
             view.setAdapter(postsList)
+            view.hideProgress()
         }
 
         override fun onError(exception: Throwable) {
