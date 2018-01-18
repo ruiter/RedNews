@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 data class PostsListResponse(@SerializedName("kind")
                              val kind: String,
                              @SerializedName("data")
-                             val dataResponse: DataResponse,
-                             @SerializedName("after")
-                             val after: String?)
+                             val dataResponse: DataResponse)
 
 data class DataResponse(@SerializedName("whitelist_status")
-                            val whitelistStatus: String,
-                            @SerializedName("children")
-                            val childrenResponse: MutableList<ChildrenResponse>)
+                        val whitelistStatus: String,
+                        @SerializedName("children")
+                        val childrenResponse: MutableList<ChildrenResponse>,
+                        @SerializedName("after")
+                        val after: String?)
 
 data class ChildrenResponse(@SerializedName("data")
                         val dataChildren: DataChildrenResponse)

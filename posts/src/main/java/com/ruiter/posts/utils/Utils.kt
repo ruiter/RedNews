@@ -1,7 +1,6 @@
 package com.ruiter.posts.utils
 
 import android.content.Context
-import android.util.Log
 import com.ruiter.posts.list.presentation.model.Images
 import com.ruiter.posts.list.presentation.model.Resolutions
 
@@ -20,41 +19,26 @@ import com.ruiter.posts.list.presentation.model.Resolutions
     small (ldpi): 240x320
  */
 
-class Utils constructor(context: Context) {
-    fun getBestResolutionImage(context: Context, imageList: MutableList<Images>) : Resolutions {
+fun getBestResolutionImage(context: Context, imageList: MutableList<Images>) : Resolutions? {
 
-        val density = context.resources.displayMetrics.density;
-        lateinit var res: Resolutions
+    val density = context.resources.displayMetrics.density;
+    lateinit var res: Resolutions
 
-        Log.i("ruiter", "density" + density.toString())
-
-        if (density == 1.5f || density == 2.0f || density == 3.0f || density == 4.0f) {
-            res = filterResolutions(640, imageList[0].resolutions)
-        } else if(density == 1.0f) {
-            res = filterResolutions(320, imageList[0].resolutions)
-        } else if(density == 0.75f) {
-            res = filterResolutions(216, imageList[0].resolutions)
-        }
-
-        return res
+    if (density == 1.5f || density == 2.0f || density == 3.0f || density == 4.0f) {
+        res = filterResolutions(640, imageList[0].resolutions)
+    } else if(density == 1.0f) {
+        res = filterResolutions(320, imageList[0].resolutions)
+    } else if(density == 0.75f) {
+        res = filterResolutions(216, imageList[0].resolutions)
     }
 
-    fun filterResolutions(value: Int, resolutions: MutableList<Resolutions>): Resolutions {
-        var resFilter: Resolutions? = null
-        Log.i("ruiter", "value " + value.toString())
+    return res
+}
 
-//    resolutions.withIndex()
-//            .filter { it.value.width == value }
-//            .forEach { resFilter = it.value }
-        for (resolution in resolutions) {
+fun filterResolutions(value: Int, resolutions: MutableList<Resolutions>): Resolutions {
 
-            if (resolution.width == value) {
-                Log.i("ruiter", "teste " )
-
-                return Resolutions(resolution.url, resolution.width, resolution.height)
-            }
-        }
-
-        return Resolutions("", 0, 0)
-    }
+    return resolutions
+            .firstOrNull { it.width == value }
+            ?.let { Resolutions(it.url, it.width, it.height) }
+            ?: Resolutions("", 0, 0)
 }

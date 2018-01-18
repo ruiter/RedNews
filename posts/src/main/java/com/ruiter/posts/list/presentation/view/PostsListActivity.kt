@@ -34,6 +34,9 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
         toolbar.title = "Red News"
 
+        recyclerview.itemAnimator = DefaultItemAnimator()
+        setLayoutManager()
+
         request(false)
     }
 
@@ -47,13 +50,12 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
     override fun setAdapter(postsList: PostsList) {
         if (adapter != null) {
+            Log.i("ruiter", "addNews " + postsList.dataResponse)
             adapter?.addNews(postsList)
         } else {
             adapter = PostsListAdapter(this, postsList)
             adapter?.setList()
             adapter?.setRecyclerviewListener(recyclerview, this)
-            setLayoutManager()
-            recyclerview.itemAnimator = DefaultItemAnimator()
             recyclerview.adapter = adapter
         }
         Log.i("ruiter", "adapter " + adapter)
@@ -73,6 +75,11 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
     override fun onStop() {
         super.onStop()
+        presenter.destroy()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         presenter.destroy()
     }
 

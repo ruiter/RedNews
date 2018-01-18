@@ -11,9 +11,7 @@ import com.ruiter.posts.list.presentation.model.PostsList
 import com.ruiter.posts.list.presentation.view.adapter.viewholders.PostsListViewHolder
 import com.ruiter.posts.list.presentation.view.adapter.viewholders.ProgressViewHolder
 import android.support.v7.widget.StaggeredGridLayoutManager
-import android.util.Log
 import com.ruiter.posts.list.presentation.view.PostsListView
-
 
 class PostsListAdapter constructor(val context: Context, private val postsList: PostsList): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -39,14 +37,10 @@ class PostsListAdapter constructor(val context: Context, private val postsList: 
 
     fun setRecyclerviewListener(recyclerView: RecyclerView, view: PostsListView) {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0) {
-                    Log.i("ruiter", "scroll ")
-                    visibleItemCount = recyclerView!!.layoutManager.childCount
+                    visibleItemCount = recyclerView.layoutManager.childCount
                     totalItemCount = recyclerView.layoutManager.itemCount
-
-                    Log.i("ruiter", "visibleItemCount " + visibleItemCount)
-                    Log.i("ruiter", "totalItemCount " + totalItemCount)
 
                     // Verify if the device is tablet, because if is tablet the list is gridview
                     if (recyclerView.layoutManager is StaggeredGridLayoutManager) {
@@ -63,13 +57,9 @@ class PostsListAdapter constructor(val context: Context, private val postsList: 
                                 .layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                     }
 
-                    Log.i("ruiter", "loading " + loading)
 
                     if (loading) {
-                        Log.i("ruiter", "loading " + loading)
 
-                        Log.i("ruiter", "visibleItemCount " + visibleItemCount)
-                        Log.i("ruiter", "pastVisibleItems " + totalItemCount)
                         if (visibleItemCount + pastVisibleItems >= totalItemCount) {
                             loading = false
                             view.request(true)
@@ -129,5 +119,4 @@ class PostsListAdapter constructor(val context: Context, private val postsList: 
 
         return VIEW_ITEM
     }
-
 }

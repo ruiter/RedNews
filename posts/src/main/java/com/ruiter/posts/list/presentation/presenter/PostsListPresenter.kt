@@ -15,26 +15,28 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
     private lateinit var dataRequest: DataRequestResponse
 
     override fun destroy() {
-        Log.i("ruiter", "destroy presenter")
+        getPostsList.dispose()
     }
 
     fun request(bool: Boolean) {
         if (!bool) {
+            Log.i("ruiter", "after " + after)
+
             after = null
         }
 
         dataRequest = DataRequestResponse(after, "10")
 
-        getPostsList.execute(PostsListSubscriber(), dataRequest!!)
+        getPostsList.execute(PostsListSubscriber(), dataRequest)
     }
 
     inner class PostsListSubscriber: DisposableSingleObserver<PostsListBusinness>() {
 
         override fun onSuccess(t: PostsListBusinness) {
             val postsList: PostsList = t.toPostsList()
-            after = postsList.after
+            Log.i("ruiter", "onSucess postsList.after " + postsList.dataResponse.after)
+            after = postsList.dataResponse.after
             view.setAdapter(postsList)
-            Log.i("ruiter", "onSucess " + postsList)
         }
 
         override fun onError(exception: Throwable) {

@@ -1,11 +1,11 @@
 package com.ruiter.posts.list.domain.models
 
 data class PostsListBusinness(val kind: String,
-                              val dataBusinness: DataBusinness,
-                              val after: String?)
+                              val dataBusinness: DataBusinness)
 
 data class DataBusinness(val whitelistStatus: String,
-                         val childrenResponse: MutableList<ChildrenBusinness>)
+                         val childrenResponse: MutableList<ChildrenBusinness>,
+                         val after: String?)
 
 data class ChildrenBusinness(val dataChildren: DataChildrenBusinness)
 

@@ -4,11 +4,11 @@ import com.ruiter.posts.list.domain.models.*
 import com.ruiter.posts.list.presentation.model.*
 
 fun PostsListBusinness.toPostsList() : PostsList {
-    return PostsList(kind, dataBusinness.toChildren(), after)
+    return PostsList(kind, dataBusinness.toChildren())
 }
 
 fun DataBusinness.toChildren() : Data {
-    return Data(whitelistStatus, toMutableListDataParent())
+    return Data(whitelistStatus, toMutableListDataParent(), after)
 }
 
 fun DataBusinness.toMutableListDataParent() : MutableList<Children> {
