@@ -1,17 +1,21 @@
 package com.ruiter.posts.list.presentation.view.adapter.viewholders
 
-import android.content.Context
+import android.app.Activity
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import com.ruiter.posts.list.presentation.model.Children
 import com.ruiter.posts.list.presentation.model.Resolutions
 import com.ruiter.posts.utils.getBestResolutionImage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_posts_list.view.*
+import android.support.customtabs.CustomTabsIntent
+import android.support.v4.content.ContextCompat
+import com.ruiter.posts.R
+
 
 class PostsListViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(childreList: MutableList<Children>, position: Int, context: Context) = with(itemView) {
+    fun bind(childreList: MutableList<Children>, position: Int, context: Activity) = with(itemView) {
         val resolution: Resolutions?
 
         tvSubTitle.text = "Submitted by " + childreList[position].dataChildren.author
@@ -35,5 +39,21 @@ class PostsListViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(
 
         tvLikes.text = childreList[position].dataChildren.likes + " likes"
         tvComments.text = childreList[position].dataChildren.comments + " comments"
+
+        llHeader.setOnClickListener{
+            if (childreList[position].dataChildren.url != "") {
+                openUrl(childreList[position].dataChildren.url, context)
+            }
+        }
+    }
+
+    private fun openUrl(url: String, context: Activity) {
+        val intentBuilder = CustomTabsIntent.Builder()
+
+        intentBuilder.setStartAnimations(context, R.anim.start_in_right, R.anim.start_out_left)
+        intentBuilder.setExitAnimations(context, R.anim.start_in_left, R.anim.start_out_right)
+        intentBuilder.setToolbarColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        val customTabsIntent = intentBuilder.build()
+        customTabsIntent.launchUrl(context, Uri.parse(url))
     }
 }

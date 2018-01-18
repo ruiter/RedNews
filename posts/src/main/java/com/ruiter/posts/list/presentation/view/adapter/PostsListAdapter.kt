@@ -1,5 +1,6 @@
 package com.ruiter.posts.list.presentation.view.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -13,7 +14,9 @@ import com.ruiter.posts.list.presentation.view.adapter.viewholders.ProgressViewH
 import android.support.v7.widget.StaggeredGridLayoutManager
 import com.ruiter.posts.list.presentation.view.PostsListView
 
-class PostsListAdapter constructor(val context: Context, private val postsList: PostsList): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PostsListAdapter constructor(private val context: Activity,
+                                   private val postsList: PostsList)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var childrenList: MutableList<Children>
 
