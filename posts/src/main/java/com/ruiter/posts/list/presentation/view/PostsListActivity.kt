@@ -1,7 +1,6 @@
 package com.ruiter.posts.list.presentation.view
 
 import android.os.Bundle
-import android.support.v7.widget.DefaultItemAnimator
 import android.view.Menu
 import com.ruiter.posts.R
 import com.ruiter.posts.list.presentation.presenter.PostsListPresenter
@@ -17,16 +16,17 @@ import android.view.View
 import com.ruiter.posts.list.presentation.model.PostsList
 import kotlinx.android.synthetic.main.offline.*
 import kotlinx.android.synthetic.main.progress_list.*
+import android.view.animation.AnimationUtils
 
 class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
     @Inject
     lateinit var presenter: PostsListPresenter
 
-    var adapter: PostsListAdapter? = null
+    private var adapter: PostsListAdapter? = null
 
-    val linearManager = LinearLayoutManager(this)
-    val staggeredManager = StaggeredGridLayoutManager(2,
+    private val linearManager = LinearLayoutManager(this)
+    private val staggeredManager = StaggeredGridLayoutManager(2,
             StaggeredGridLayoutManager.VERTICAL)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,10 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
         toolbar.title = "Red News"
 
-        recyclerview.itemAnimator = DefaultItemAnimator()
+        val resId = R.anim.layout_anim_from_recyclerview
+        val animation = AnimationUtils.loadLayoutAnimation(this, resId)
+
+        recyclerview.layoutAnimation = animation
         setLayoutManager()
 
         tvButtonOffline.setOnClickListener{
@@ -64,8 +67,9 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
             adapter?.setList()
             adapter?.setRecyclerviewListener(recyclerview, this)
             recyclerview.adapter = adapter
+            runLayoutAnimation()
         }
-        Log.i("ruiter", "adapter " + adapter)
+
         adapter?.setLoaded()
     }
 
@@ -109,6 +113,12 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
     override fun hideError() {
         llOffline.visibility = View.GONE
         llProgressList.visibility = View.VISIBLE
+    }
+
+    private fun runLayoutAnimation() {
+        recyclerview.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_from_recyclerview)
+        recyclerview.adapter.notifyDataSetChanged()
+        recyclerview.scheduleLayoutAnimation()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
