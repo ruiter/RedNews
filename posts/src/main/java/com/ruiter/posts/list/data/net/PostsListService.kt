@@ -11,6 +11,6 @@ interface PostsListService {
     fun getPostsList(
             @Query("after") after: String?,
             @Query("limit") limit: String,
-            @Query("raw_json") ram: String
+            @Query("raw_json") raw: String
     ) : Single<PostsListResponse>
 }

@@ -73,17 +73,13 @@ dependencies {
     testCompile 'org.mockito:mockito-core:2.4.5'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.10"
-
-    testCompile 'org.jetbrains.kotlin:kotlin-stdlib:1.2.10'
-    testCompile 'org.jetbrains.kotlin:kotlin-test-junit:1.0.6'
     testCompile "com.nhaarman:mockito-kotlin:1.1.0"
-    testCompile 'org.amshove.kluent:kluent:1.14'
 
     // support
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
-    
+
     // chrome custom tabs
     implementation 'com.android.support:customtabs:26.1.0'
 }
