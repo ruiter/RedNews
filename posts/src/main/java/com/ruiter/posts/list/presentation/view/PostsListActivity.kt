@@ -11,9 +11,8 @@ import android.view.MenuItem
 import com.ruiter.posts.list.presentation.view.adapter.PostsListAdapter
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
-import com.ruiter.posts.list.presentation.model.PostsList
+import com.ruiter.posts.list.presentation.models.PostsList
 import kotlinx.android.synthetic.main.offline.*
 import kotlinx.android.synthetic.main.progress_list.*
 import android.view.animation.AnimationUtils
@@ -60,7 +59,6 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
     override fun setAdapter(postsList: PostsList) {
         if (adapter != null) {
-            Log.i("ruiter", "addNews " + postsList.dataResponse)
             adapter?.addNews(postsList)
         } else {
             adapter = PostsListAdapter(this, postsList)
@@ -82,11 +80,6 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
             recyclerview.layoutManager = staggeredManager
         }
 
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.destroy()
     }
 
     override fun onDestroy() {

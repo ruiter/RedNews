@@ -1,6 +1,6 @@
 package com.ruiter.posts.list.presentation.view
 
-import com.ruiter.posts.list.presentation.model.PostsList
+import com.ruiter.posts.list.presentation.models.PostsList
 
 interface PostsListView {
 

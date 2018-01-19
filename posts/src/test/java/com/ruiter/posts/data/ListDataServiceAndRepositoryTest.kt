@@ -1,7 +1,6 @@
 package com.ruiter.posts.data
 
 import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.whenever
 import com.ruiter.posts.list.data.mapper.toPostsListBusinness
 import com.ruiter.posts.list.data.models.ChildrenResponse
@@ -60,7 +59,7 @@ class ListDataServiceAndRepositoryTest {
                 .thenReturn(single)
     }
 
-    fun makeListResponse() : PostsListResponse {
+    private fun makeListResponse() : PostsListResponse {
         return PostsListResponse("Listing", dataResponse)
     }
 }

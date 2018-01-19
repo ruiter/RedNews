@@ -1,11 +1,10 @@
 package com.ruiter.posts.list.presentation.presenter
 
-import android.util.Log
 import com.ruiter.posts.list.domain.interactor.GetPostsList
 import com.ruiter.posts.list.domain.models.DataRequestResponse
 import com.ruiter.posts.list.domain.models.PostsListBusinness
 import com.ruiter.posts.list.presentation.mapper.toPostsList
-import com.ruiter.posts.list.presentation.model.PostsList
+import com.ruiter.posts.list.presentation.models.PostsList
 import com.ruiter.posts.list.presentation.view.PostsListView
 import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
@@ -21,7 +20,6 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
     fun request(bool: Boolean) {
 
         if (!bool) {
-            Log.i("ruiter", "after " + after)
             view.hideError()
             view.showProgress()
             after = null
@@ -45,8 +43,6 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
         override fun onError(exception: Throwable) {
             view.hideProgress()
             view.showError()
-            Log.i("ruiter", "onError " + exception.message)
         }
-
     }
 }

@@ -1,14 +1,13 @@
 package com.ruiter.posts.list.presentation.view.adapter
 
 import android.app.Activity
-import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ruiter.posts.R
-import com.ruiter.posts.list.presentation.model.Children
-import com.ruiter.posts.list.presentation.model.PostsList
+import com.ruiter.posts.list.presentation.models.Children
+import com.ruiter.posts.list.presentation.models.PostsList
 import com.ruiter.posts.list.presentation.view.adapter.viewholders.PostsListViewHolder
 import com.ruiter.posts.list.presentation.view.adapter.viewholders.ProgressViewHolder
 import android.support.v7.widget.StaggeredGridLayoutManager

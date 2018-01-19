@@ -1,4 +1,4 @@
-package com.ruiter.posts.list.presentation.model
+package com.ruiter.posts.list.presentation.models
 
 data class PostsList(val kind: String, val dataResponse: Data)
 

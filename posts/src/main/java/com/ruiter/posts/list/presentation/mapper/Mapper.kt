@@ -1,7 +1,7 @@
 package com.ruiter.posts.list.presentation.mapper
 
 import com.ruiter.posts.list.domain.models.*
-import com.ruiter.posts.list.presentation.model.*
+import com.ruiter.posts.list.presentation.models.*
 
 fun PostsListBusinness.toPostsList() : PostsList {
     return PostsList(kind, dataBusinness.toChildren())
