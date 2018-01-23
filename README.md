@@ -1,5 +1,5 @@
 # ruiter/RedNews
-Android application built on the clean architecture design pattern that consumes a Reddit API.
+Android application built on the [Clean Architecture](https://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html) design pattern that consumes a Reddit API.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/6c9ebc71a82c09b385e5/maintainability)](https://codeclimate.com/github/ruiter/RedNews/maintainability)
 
