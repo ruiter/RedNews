@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+/*
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 
 // Initialize a new Properties() object called keystoreProperties.
@@ -10,8 +11,9 @@ def keystoreProperties = new Properties()
 
 // Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
+**/
 android {
+    /**
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
@@ -20,6 +22,7 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
+     **/
     compileSdkVersion 26
     buildToolsVersion '27.0.1'
     defaultConfig {
@@ -35,7 +38,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            //signingConfig signingConfigs.config
         }
     }
 }

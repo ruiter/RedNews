@@ -17,7 +17,7 @@ class PostsListPresenter @Inject constructor(val view: PostsListView, val getPos
         getPostsList.dispose()
     }
 
-    fun request(bool: Boolean) {
+    override fun request(bool: Boolean) {
 
         if (!bool) {
             view.hideError()

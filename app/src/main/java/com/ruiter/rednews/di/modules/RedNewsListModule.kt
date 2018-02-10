@@ -7,6 +7,7 @@ import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
 import com.ruiter.posts.list.domain.interactor.GetPostsList
 import com.ruiter.posts.list.domain.repository.PostsListBusinnessRepository
 import com.ruiter.posts.list.presentation.presenter.PostsListPresenter
+import com.ruiter.posts.list.presentation.presenter.Presenter
 import com.ruiter.posts.list.presentation.view.PostsListActivity
 import com.ruiter.posts.list.presentation.view.PostsListView
 import dagger.Module
@@ -28,7 +29,7 @@ class RedNewsListModule {
     }
 
     @Provides
-    fun providePostsListPresenter(postsListView: PostsListView, getPostsList: GetPostsList) : PostsListPresenter {
+    fun providePostsListPresenter(postsListView: PostsListView, getPostsList: GetPostsList) : Presenter {
         return PostsListPresenter(postsListView, getPostsList)
     }
 
