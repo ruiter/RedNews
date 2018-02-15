@@ -1,4 +1,4 @@
-package com.ruiter.posts.data
+package com.ruiter.posts.data.data
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
@@ -9,7 +9,7 @@ import com.ruiter.posts.list.data.models.PostsListResponse
 import com.ruiter.posts.list.data.net.PostsListService
 import com.ruiter.posts.list.data.repository.PostsListDataRepository
 import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
-import com.ruiter.posts.list.domain.models.DataRequestResponse
+import com.ruiter.posts.list.domain.models.DataRequestList
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -27,7 +27,7 @@ class ListDataServiceAndRepositoryTest {
     private var dataResponse = DataResponse("all_ads", listChildrenResponse,
             after)
 
-    private var dataRequest = DataRequestResponse(after, limit)
+    private var dataRequest = DataRequestList(after, limit)
 
     @Before
     fun setUp() {
