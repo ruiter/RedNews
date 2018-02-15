@@ -1,4 +1,4 @@
-package com.ruiter.posts.data.data
+package com.ruiter.posts.data
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
