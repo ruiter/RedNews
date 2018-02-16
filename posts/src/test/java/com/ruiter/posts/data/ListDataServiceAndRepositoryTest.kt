@@ -2,6 +2,7 @@ package com.ruiter.posts.data
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
+import com.ruiter.posts.data.factory.PostsListFactory.Factory.makeListResponse
 import com.ruiter.posts.list.data.mapper.toPostsListBusinness
 import com.ruiter.posts.list.data.models.ChildrenResponse
 import com.ruiter.posts.list.data.models.DataResponse
@@ -38,14 +39,14 @@ class ListDataServiceAndRepositoryTest {
 
     @Test
     fun listAssertComplete() {
-        listServiceGetSingle(Single.just(makeListResponse()))
+        listServiceGetSingle(Single.just(makeListResponse(dataResponse)))
         val observer = listDataImpl.getPostsList(after, limit).test()
         observer.assertComplete()
     }
 
     @Test
     fun assertValueListDataResponse() {
-        val listResponse = makeListResponse()
+        val listResponse = makeListResponse(dataResponse)
         listServiceGetSingle(Single.just(listResponse))
 
         val listBusiness = listResponse.toPostsListBusinness()
@@ -57,9 +58,5 @@ class ListDataServiceAndRepositoryTest {
     private fun listServiceGetSingle(single: Single<PostsListResponse>) {
         whenever(service.getPostsList(after, limit, raw))
                 .thenReturn(single)
-    }
-
-    private fun makeListResponse() : PostsListResponse {
-        return PostsListResponse("Listing", dataResponse)
     }
 }
