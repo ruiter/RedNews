@@ -40,7 +40,9 @@ class ListDataServiceAndRepositoryTest {
     @Test
     fun listAssertComplete() {
         listServiceGetSingle(Single.just(makeListResponse(dataResponse)))
+
         val observer = listDataImpl.getPostsList(after, limit).test()
+
         observer.assertComplete()
     }
 

@@ -1,10 +1,8 @@
 package com.ruiter.posts.utils
 
 import android.content.Context
-import android.widget.ImageView
 import com.ruiter.posts.list.presentation.models.Images
 import com.ruiter.posts.list.presentation.models.Resolutions
-import com.squareup.picasso.Picasso
 
 /**
  * reference
@@ -43,8 +41,4 @@ fun filterResolutions(value: Int, resolutions: MutableList<Resolutions>): Resolu
             .firstOrNull { it.width == value }
             ?.let { Resolutions(it.url, it.width, it.height) }
             ?: Resolutions("", 0, 0)
-}
-
-fun ImageView.loadUrl(url: String?) {
-    Picasso.with(context).load(url).into(this)
 }
