@@ -16,5 +16,11 @@ Android application built on the [Clean Architecture](https://blog.8thlight.com/
 ### Commands
 * `./gradlew installRelease` - Installation of apk signed in Release
 
+### Screens
+![alt text](https://github.com/ruiter/RedNews/blob/master/screens/home.png)
+![alt text](https://github.com/ruiter/RedNews/blob/master/screens/detalis_webview.png)
+![alt text](https://github.com/ruiter/RedNews/blob/master/screens/home2.png)
+![alt text](https://github.com/ruiter/RedNews/blob/master/screens/noconnection.png)
+
 ## Author
 * Ruiter Matos - ruitercomp@gmail.com
