@@ -10,7 +10,7 @@ import org.junit.Test
 /**
  * Created by ruitermatos on 13/03/18.
  */
-class GetPostsList {
+class GetPostsListTest {
 
     private lateinit var params: DataRequestList
     private lateinit var postsListBusinnessRepository: PostsListBusinnessRepository

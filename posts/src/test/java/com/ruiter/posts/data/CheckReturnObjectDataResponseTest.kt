@@ -16,7 +16,7 @@ import org.junit.Test
 /**
  * Created by ruitermatos on 13/03/18.
  */
-class CheckReturnObjectDataResponse {
+class CheckReturnObjectDataResponseTest {
 
     private lateinit var service: PostsListService
     private lateinit var listDataImpl: PostsListDataImpl
