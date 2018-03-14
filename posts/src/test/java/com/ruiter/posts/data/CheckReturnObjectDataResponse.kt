@@ -1,29 +1,35 @@
 package com.ruiter.posts.data
 
 import com.nhaarman.mockito_kotlin.mock
-import com.ruiter.posts.data.factory.PostsListFactory.Factory.listServiceGetSingle
-import com.ruiter.posts.data.factory.PostsListFactory.Factory.makeListResponse
+import com.ruiter.posts.data.factory.PostsListFactory
+import com.ruiter.posts.list.data.mapper.toPostsListBusinness
 import com.ruiter.posts.list.data.models.ChildrenResponse
 import com.ruiter.posts.list.data.models.DataResponse
 import com.ruiter.posts.list.data.net.PostsListService
 import com.ruiter.posts.list.data.repository.PostsListDataRepository
 import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
+import com.ruiter.posts.list.domain.models.DataRequestList
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 
-class ListDataServiceAndRepositoryTest {
+/**
+ * Created by ruitermatos on 13/03/18.
+ */
+class CheckReturnObjectDataResponse {
 
     private lateinit var service: PostsListService
     private lateinit var listDataImpl: PostsListDataImpl
     private lateinit var listDataRepository: PostsListDataRepository
-    private val listChildrenResponse = mutableListOf<ChildrenResponse>()
     private var after: String? = null
     private var limit = "10"
     private var raw = "1"
+    private val listChildrenResponse = mutableListOf<ChildrenResponse>()
 
     private var dataResponse = DataResponse("all_ads", listChildrenResponse,
             after)
+
+    private var dataRequest = DataRequestList(after, limit)
 
     @Before
     fun setUp() {
@@ -33,11 +39,13 @@ class ListDataServiceAndRepositoryTest {
     }
 
     @Test
-    fun checkReturnGetPostsList() {
-        listServiceGetSingle(Single.just(makeListResponse(dataResponse)), service, after, limit, raw)
+    fun assertValueListDataResponse() {
+        val listResponse = PostsListFactory.makeListResponse(dataResponse)
+        PostsListFactory.listServiceGetSingle(Single.just(listResponse), service, after, limit, raw)
 
-        val observer = listDataImpl.getPostsList(after, limit).test()
+        val listBusiness = listResponse.toPostsListBusinness()
 
-        observer.assertComplete()
+        val observer = listDataRepository.getPostsList(dataRequest).test()
+        observer.assertValue(listBusiness)
     }
 }
