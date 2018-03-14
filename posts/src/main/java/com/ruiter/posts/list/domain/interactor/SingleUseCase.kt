@@ -7,7 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-abstract class UseCase<T, in Params> {
+abstract class SingleUseCase<T, in Params> {
     private val disposables = CompositeDisposable()
 
     internal abstract fun buildUseCaseSingle(params: Params): Single<T>

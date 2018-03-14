@@ -7,7 +7,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetPostsList @Inject constructor(private val postsListBusinnessRepository: PostsListBusinnessRepository)
-    : UseCase<PostsListBusinness, DataRequestList>() {
+    : SingleUseCase<PostsListBusinness, DataRequestList>() {
 
     override fun buildUseCaseSingle(params: DataRequestList): Single<PostsListBusinness> {
         return postsListBusinnessRepository.getPostsList(params)
