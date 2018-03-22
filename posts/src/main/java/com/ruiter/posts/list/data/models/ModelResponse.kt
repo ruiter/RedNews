@@ -1,69 +1,29 @@
 package com.ruiter.posts.list.data.models
 
-import com.google.gson.annotations.SerializedName
+data class PostsListResponse(val kind: String, val dataResponse: DataResponse)
 
-data class PostsListResponse(@SerializedName("kind")
-                             val kind: String,
+data class DataResponse(
+    val whitelistStatus: String,
+    val childrenResponse: MutableList<ChildrenResponse>,
+    val after: String?
+)
 
-                             @SerializedName("data")
-                             val dataResponse: DataResponse)
+data class ChildrenResponse(val dataChildren: DataChildrenResponse)
 
-data class DataResponse(@SerializedName("whitelist_status")
-                        val whitelistStatus: String,
+data class DataChildrenResponse(
+    val title: String,
+    val thumbnail: String,
+    val author: String,
+    val url: String,
+    val likes: String,
+    val comments: String,
+    val preview: PreviewResponse?
+)
 
-                        @SerializedName("children")
-                        val childrenResponse: MutableList<ChildrenResponse>,
+data class PreviewResponse(val images: MutableList<ImagesResponse>)
 
-                        @SerializedName("after")
-                        val after: String?)
+data class ImagesResponse(val source: SourceResponse, val resolutions: MutableList<ResolutionsResponse>)
 
-data class ChildrenResponse(@SerializedName("data")
-                            val dataChildren: DataChildrenResponse)
+data class SourceResponse(val url: String, val width: Int, val height: Int)
 
-data class DataChildrenResponse(@SerializedName("title")
-                                val title: String,
-
-                                @SerializedName("thumbnail")
-                                val thumbnail: String,
-
-                                @SerializedName("author")
-                                val author: String,
-
-                                @SerializedName("url")
-                                val url: String,
-
-                                @SerializedName("ups")
-                                val likes: String,
-
-                                @SerializedName("num_comments")
-                                val comments: String,
-
-                                @SerializedName("preview")
-                                val preview: PreviewResponse?)
-
-data class PreviewResponse(@SerializedName("images")
-                           val images: MutableList<ImagesResponse>)
-
-data class ImagesResponse(@SerializedName("source")
-                          val source: SourceResponse,
-
-                          @SerializedName("resolutions")
-                            val resolutions: MutableList<ResolutionsResponse>)
-
-data class SourceResponse(@SerializedName("url")
-                          val url: String,
-
-                          @SerializedName("width")
-                          val width: Int,
-
-                          @SerializedName("height")
-                          val height: Int)
-
-data class ResolutionsResponse(@SerializedName("url")
-                               val url: String,
-
-                               @SerializedName("width")
-                               val width: Int,
-
-                               @SerializedName("height")
-                               val height: Int)
+data class ResolutionsResponse(val url: String, val width: Int, val height: Int)
