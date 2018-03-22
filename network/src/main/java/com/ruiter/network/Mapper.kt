@@ -1,4 +1,4 @@
-package com.ruiter.network.posts
+package com.ruiter.network
 
 /**
  * Created by ruitermatos on 21/03/18.
