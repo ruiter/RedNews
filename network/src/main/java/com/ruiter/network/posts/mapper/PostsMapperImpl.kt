@@ -1,4 +1,4 @@
-package com.ruiter.network.posts
+package com.ruiter.network.posts.mapper
 
 import com.ruiter.network.Mapper
 import com.ruiter.network.posts.models.PostsListRemote
@@ -9,6 +9,6 @@ import com.ruiter.posts.list.data.models.PostsListResponse
  */
 class PostsMapperImpl : Mapper<PostsListRemote, PostsListResponse> {
     override fun mapFromNetwork(type: PostsListRemote): PostsListResponse {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return PostsListResponse(type.kind, type.dataRemote.toChildrenResponse())
     }
 }
