@@ -8,6 +8,7 @@ import com.ruiter.posts.list.data.models.PostsListResponse
  * Created by ruitermatos on 21/03/18.
  */
 class PostsMapperImpl : Mapper<PostsListRemote, PostsListResponse> {
+
     override fun mapFromNetwork(type: PostsListRemote): PostsListResponse {
         return PostsListResponse(type.kind, type.dataRemote.toChildrenResponse())
     }
