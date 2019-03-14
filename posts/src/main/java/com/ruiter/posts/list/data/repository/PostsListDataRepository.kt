@@ -1,5 +1,6 @@
 package com.ruiter.posts.list.data.repository
 
+import android.util.Log
 import com.ruiter.posts.list.data.mapper.toPostsListBusinness
 import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
 import com.ruiter.posts.list.domain.models.DataRequestList
@@ -13,6 +14,7 @@ class PostsListDataRepository @Inject constructor(private val postsListDataImpl:
     override fun getPostsList(dataParentBusinness: DataRequestList): Single<PostsListBusinness> {
         return postsListDataImpl.getPostsList(dataParentBusinness.after, dataParentBusinness.limit)
                 .map {
+                    Log.i("ruiter", "postlisresponse: " + it);
                     it.toPostsListBusinness()
                 }
     }

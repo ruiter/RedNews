@@ -110,7 +110,7 @@ class PostsListActivity : DaggerAppCompatActivity(), PostsListView {
 
     private fun runLayoutAnimation() {
         recyclerview.layoutAnimation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_from_recyclerview)
-        recyclerview.adapter.notifyDataSetChanged()
+        recyclerview.adapter!!.notifyDataSetChanged()
         recyclerview.scheduleLayoutAnimation()
     }
 

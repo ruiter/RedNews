@@ -41,8 +41,8 @@ class PostsListAdapter constructor(private val context: Activity,
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0) {
-                    visibleItemCount = recyclerView.layoutManager.childCount
-                    totalItemCount = recyclerView.layoutManager.itemCount
+                    visibleItemCount = recyclerView.layoutManager!!.childCount
+                    totalItemCount = recyclerView.layoutManager!!.itemCount
 
                     // Verify if the device is tablet, because if is tablet the list is gridview
                     if (recyclerView.layoutManager is StaggeredGridLayoutManager) {
@@ -79,30 +79,32 @@ class PostsListAdapter constructor(private val context: Activity,
         notifyItemInserted(childrenList.size)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        if (holder?.itemViewType == VIEW_ITEM) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder.itemViewType == VIEW_ITEM) {
             val holderPosts = holder as PostsListViewHolder
             holderPosts.bind(childrenList, position, context)
-        } else  if (holder?.itemViewType == VIEW_PROG) {
+        } else  if (holder.itemViewType == VIEW_PROG) {
             val holderPosts = holder as ProgressViewHolder
             holderPosts.bind()
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val v = LayoutInflater.from(
+            parent.context).inflate(R.layout.card_posts_list, parent, false)
         if (viewType == VIEW_ITEM) {
-            val v = LayoutInflater.from(
-                    parent?.context).inflate(R.layout.card_posts_list, parent, false)
+            val v1 = LayoutInflater.from(
+                    parent.context).inflate(R.layout.card_posts_list, parent, false)
 
-            return PostsListViewHolder(v)
+            return PostsListViewHolder(v1)
         } else if (viewType == VIEW_PROG) {
-            val v = LayoutInflater.from(
-                    parent?.context).inflate(R.layout.progress_loading, parent, false)
+            val v2 = LayoutInflater.from(
+                    parent.context).inflate(R.layout.progress_loading, parent, false)
 
-            return ProgressViewHolder(v, v.findViewById(R.id.progressBar))
+            return ProgressViewHolder(v2, v2.findViewById(R.id.progressBar))
         }
 
-        return null
+        return PostsListViewHolder(v)
     }
 
     override fun getItemCount(): Int {

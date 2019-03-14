@@ -1,5 +1,6 @@
 package com.ruiter.posts.list.presentation.presenter
 
+import android.util.Log
 import com.ruiter.posts.list.domain.interactor.GetPostsList
 import com.ruiter.posts.list.domain.models.DataRequestList
 import com.ruiter.posts.list.domain.models.PostsListBusinness
@@ -30,8 +31,9 @@ class PostsListPresenter @Inject constructor(val view: PostsListView,
 
     inner class PostsListSubscriber: DisposableSingleObserver<PostsListBusinness>() {
 
-        override fun onSuccess(t: PostsListBusinness) {
-            val postsList: PostsList = t.toPostsList()
+        override fun onSuccess(result: PostsListBusinness) {
+            Log.i("ruiter", "result : " + result);
+            val postsList: PostsList = result.toPostsList()
 
             dataRequest.after = postsList.dataResponse.after
             view.setAdapter(postsList)
@@ -39,6 +41,8 @@ class PostsListPresenter @Inject constructor(val view: PostsListView,
         }
 
         override fun onError(exception: Throwable) {
+            Log.i("ruiter", "exception : " + exception.localizedMessage);
+
             view.hideProgress()
             view.showError()
         }
