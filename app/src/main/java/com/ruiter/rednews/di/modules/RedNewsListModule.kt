@@ -1,8 +1,7 @@
 package com.ruiter.rednews.di.modules
 
-import com.ruiter.posts.list.data.net.PostsListService
 import com.ruiter.posts.list.data.repository.PostsListDataRepository
-import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
+import com.ruiter.posts.list.data.repository.source.PostsListDataStoreImpl
 import com.ruiter.posts.list.domain.interactor.GetPostsList
 import com.ruiter.posts.list.domain.models.DataRequestList
 import com.ruiter.posts.list.domain.repository.PostsListBusinnessRepository
@@ -23,7 +22,7 @@ class RedNewsListModule {
     }
 
     @Provides
-    fun providePostsListBusinnessRepository(postsListDataImpl: PostsListDataImpl) : PostsListBusinnessRepository {
+    fun providePostsListBusinnessRepository(postsListDataImpl: PostsListDataStoreImpl) : PostsListBusinnessRepository {
         return PostsListDataRepository(postsListDataImpl)
     }
 

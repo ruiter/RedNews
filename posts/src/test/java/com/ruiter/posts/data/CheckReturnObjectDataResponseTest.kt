@@ -5,9 +5,8 @@ import com.ruiter.posts.data.factory.PostsListFactory
 import com.ruiter.posts.list.data.mapper.toPostsListBusinness
 import com.ruiter.posts.list.data.models.ChildrenResponse
 import com.ruiter.posts.list.data.models.DataResponse
-import com.ruiter.posts.list.data.net.PostsListService
 import com.ruiter.posts.list.data.repository.PostsListDataRepository
-import com.ruiter.posts.list.data.repository.source.PostsListDataImpl
+import com.ruiter.posts.list.data.repository.source.PostsListDataStoreImpl
 import com.ruiter.posts.list.domain.models.DataRequestList
 import io.reactivex.Single
 import org.junit.Before
@@ -19,7 +18,7 @@ import org.junit.Test
 class CheckReturnObjectDataResponseTest {
 
     private lateinit var service: PostsListService
-    private lateinit var listDataImpl: PostsListDataImpl
+    private lateinit var listDataImpl: PostsListDataStoreImpl
     private lateinit var listDataRepository: PostsListDataRepository
     private var after: String? = null
     private var limit = "10"
@@ -34,7 +33,7 @@ class CheckReturnObjectDataResponseTest {
     @Before
     fun setUp() {
         service = mock()
-        listDataImpl = PostsListDataImpl(service)
+        listDataImpl = PostsListDataStoreImpl(service)
         listDataRepository = PostsListDataRepository(listDataImpl)
     }
 

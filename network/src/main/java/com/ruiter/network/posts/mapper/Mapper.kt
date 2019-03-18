@@ -6,6 +6,11 @@ import com.ruiter.posts.list.data.models.*
 /**
  * Created by ruitermatos on 26/03/18.
  */
+
+fun PostsListRemote.toPostsListResponse() : PostsListResponse {
+    return PostsListResponse(kind, dataRemote.toChildrenResponse())
+}
+
 fun DataRemote.toChildrenResponse() : DataResponse {
     return DataResponse(whitelistStatus, toMutableListDataParentBusinnes(), after)
 }
