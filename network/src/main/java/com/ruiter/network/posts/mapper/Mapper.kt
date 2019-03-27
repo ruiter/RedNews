@@ -12,7 +12,7 @@ fun PostsListRemote.toPostsListResponse() : PostsListResponse {
 }
 
 fun DataRemote.toChildrenResponse() : DataResponse {
-    return DataResponse(whitelistStatus, toMutableListDataParentBusinnes(), after)
+    return DataResponse(toMutableListDataParentBusinnes(), after)
 }
 
 fun DataRemote.toMutableListDataParentBusinnes() : MutableList<ChildrenResponse> {

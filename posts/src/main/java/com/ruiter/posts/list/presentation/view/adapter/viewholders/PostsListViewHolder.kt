@@ -7,13 +7,11 @@ import android.view.View
 import com.ruiter.posts.list.presentation.models.Children
 import com.ruiter.posts.list.presentation.models.Resolutions
 import com.ruiter.posts.utils.getBestResolutionImage
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_posts_list.view.*
 import android.support.customtabs.CustomTabsIntent
 import android.support.v4.content.ContextCompat
 import com.ruiter.posts.R
 import com.ruiter.posts.utils.loadUrl
-
 
 class PostsListViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(childreList: MutableList<Children>, position: Int, context: Activity) = with(itemView) {

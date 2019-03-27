@@ -3,7 +3,6 @@ package com.ruiter.posts.list.data.models
 data class PostsListResponse(val kind: String, val dataResponse: DataResponse)
 
 data class DataResponse(
-    val whitelistStatus: String,
     val childrenResponse: MutableList<ChildrenResponse>,
     val after: String?
 )

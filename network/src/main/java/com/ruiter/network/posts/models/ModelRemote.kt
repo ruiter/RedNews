@@ -13,8 +13,6 @@ data class PostsListRemote(
 )
 
 data class DataRemote(
-    @SerializedName("whitelist_status")
-    val whitelistStatus: String,
     @SerializedName("children")
     val childrenRemote: MutableList<ChildrenRemote>,
     @SerializedName("after")
